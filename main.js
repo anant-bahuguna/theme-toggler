@@ -13,8 +13,17 @@ const toggleTheme = () => {
     if (toggleSwitch.checked) {
         theme = "dark";
     } else theme = "light";
+    addTransition();
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme1", theme);
+};
+
+const addTransition = () => {
+    document.documentElement.classList.add("transition");
+
+    window.setTimeout(() => {
+        document.documentElement.classList.remove("transition");
+    }, 1000);
 };
 
 toggleSwitch.addEventListener("change", toggleTheme);
